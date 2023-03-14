@@ -7,11 +7,12 @@
 
 ### **How to use run_me.sh shell script**
 
-    1. Press Ctrl+Shift+P.
-    2. Search for Terminal: Create New Terminal then press Enter.
-    3. Click in the terminal, then type ./run_me.sh and press Enter.
-    4. Voila! it is now running.
-    5. You can then select from the options based on what do you want to do.
+    1. Open the solution explorer in vscode by pressing Ctrl+B.
+    2. Right click the run_me.sh file in explorer.
+    3. Then select Open in Integrated Terminal.
+    4. Click on the terminal and type, ./run_me.sh then press Enter.
+    5. Voila! It is now running.
+    5. You can then select from the options what do you want to do.
     6. Just input what the prompt need and avoid using spaces, instead use hyphen.
     7. Start a new task once you save all your previous work.
     8. Save your task when you're done with your task.
