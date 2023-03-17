@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li, a{
+    font-family: "Abel", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: #edf0f1;
+    text-decoration: none;
+} 
+
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10%;
+}
+
+.header ul{
+	text-align:right;
+ 	padding-left: 20px;
+  	align-items: center;
+}
+
+ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 0px 35px;
+
+}
+
+.header ul li a{
+	display:block;
+	text-decoration: none;
+	text-transform: uppercase;
+	color:#fff;
+	font-size: 20px;
+	font-family: "Abel", sans-serif;
+	letter-spacing: 2px;
+	padding: 10px;
+	transition: all ease 0.5s;
+	border-radius: 20px;
+}
+
+.header ul li a:hover{
+	background-color: #393E46;
+	color: #827bc6;
+}
+
+.site-logo{
+	margin: -23px ;
+	cursor: pointer;
+} 
+
+.contact{
+	padding:9px 25px;
+	background-color: #827bc6;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+
+	text-transform: uppercase;
+	font-family: "Abel", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+.contact:hover{
+	background-color: #4b429a;
+}
+
+.bg-gradient{
+	height: 100vh;
+  	background-image: linear-gradient(to bottom, #222831, #262c35, #2a3039, #2f343d, #333841, #38424e, #3c4c5b, #3f5768, #3c6b80, #338196, #2197a8, #00adb5);
+	position: relative;
+}
+
+.container{
+	padding: 50px;
+	max-width: 700px;
+
+	height: 00px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position:absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.container .card{
+	margin:20px;
+	height: 200px;
+	width: 600px;
+
+	text-align: center;
+	float:left;
+	font-family: "Abel", sans-serif;
+	font-weight: normal;
+	color: #fff;
+
+  	align-items: center;
+	justify-content: center;
+}
+
+.s1{
+	font-size: 24px;
+}
+
+.s2{
+	font-size: 21px;
+}
+
+.s3{
+	font-size: 20px;
+}
+
+p{
+  overflow:hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10;
+}
+
+h2{
+	text-align: center;
+}
+
+footer{
+	position:absolute;
+	bottom: 0;
+	height: auto;
+	width: 100vw;
+	font-family: "Abel", sans-serif;
+	padding-top: 40px;
+	color: #fff;
+  
+  
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: right;
+  
+	padding-left: 10px;
+	padding-bottom: 20px;
+  
+  }
+  
+  footer .haraya-logo{
+	  padding-right: 10px;
+	  padding-bottom:10px;
+  
+	  position: absolute;
+	  top: 1;
+	  bottom: 0;
+	  left: 1;
+	  right: 0;
+  }
+  
+  
+  footer p{
+	  font-size: 14px;
+	  text-align: center;
+	}
+  
+  
+.page-title{
+		margin: 40px;
+	  text-align: center;
+  
+	  font-family: "Orbitron", sans-serif;
+	  font-size: 34px;
+	  font-weight: bold;
+	  color: #fff;
+  
+	letter-spacing: 10px;
+  
+	color: #827bc6;
+  
+  }
