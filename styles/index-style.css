@@ -77,44 +77,112 @@ ul li {
 
 .bg-gradient {
 	height: 100vh;
+	width: 100vw;
 	background-image: linear-gradient(to bottom, #222831, #262c35, #2a3039, #2f343d, #333841, #38424e, #3c4c5b, #3f5768, #3c6b80, #338196, #2197a8, #00adb5);
 	position: relative;
 }
 
-.page-title {
-	text-align: center;
-	font-family: "Orbitron", sans-serif;
-	font-size: 40px;
-	font-weight: bold;
-	color: #fff;
-	letter-spacing: 10px;
-	color: #827bc6;
-}
-
 .container {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 	margin: auto;
 }
 
-.container .card {
-	margin: 40px;
-	height: 200px;
-	width: 300px;
-
+.card {
+	padding-top: 15px;
 	font-family: "Abel", sans-serif;
-	font-size: 20px;
 	font-weight: normal;
 	color: #fff;
-
-	align-items: center;
-	justify-content: center;
 }
 
-h2 {
-	text-align: center;
+.page-title {
+	font-family: "Orbitron", sans-serif;
+	font-size: 34px;
+	font-weight: bold;
+	letter-spacing: 10px;
+	color: #827bc6;
+}
+
+.console {
+	padding-top: 20px;
+}
+
+#console {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 10px;
+	border-radius: 20px;
+	font-family: "Abel", sans-serif;
+	font-weight: bold;
+	font-size: 25px;
+	resize: none;
+	display: none;
+	white-space: pre-line;
+}
+
+.button-box {
+	padding-top: 30px;
+}
+
+.start {
+	padding: 9px 25px;
+	background-color: #827bc6;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+
+	text-transform: uppercase;
+	font-family: "Abel", sans-serif;
+
+	font-size: 20px;
+	color: #edf0f1;
+	text-decoration: none;
+}
+
+.start:hover {
+	background-color: #4b429a;
+}
+
+h4 {
+	font-size: 30px;
+}
+
+.typewriter {
+	overflow: hidden;
+	border-right: .15em solid rgb(255, 255, 255);
+	white-space: nowrap;
+	margin: 0 auto;
+	letter-spacing: .15em;
+	animation:
+		typing 3.5s steps(40, end),
+		blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+	from {
+		width: 0
+	}
+
+	to {
+		width: 100%
+	}
+}
+
+@keyframes blink-caret {
+
+	from,
+	to {
+		border-color: transparent
+	}
+
+	50% {
+		border-color: rgb(255, 255, 255);
+	}
 }
 
 footer {
