@@ -5,93 +5,142 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles/generate-style.css">
+  <script defer src="scripts/generate-events.js"></script>
   <title>Generate</title>
 </head>
 
 <body>
   <!-- Header -->
-  <div class="bg-gradient"> 
-		<div class="header">
-			<img class="site-logo" src="images/iceritfy logo 250x250png.png" width="150">
-			<nav>
-				<ul class="nav_links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="tutorial.html">Tutorial</a></li>
-					<li><a href="generate.html">Generate</a></li>
-					<li><a href="about.html">About Us</a></li>
-				</ul>
-			</nav>
-			<a href="https://github.com/Haraya-Automata/e-certificate-maker-site/issues" target="_blank" class="contact">Contact</a>
-		</div>
+  <div class="bg-gradient">
+    <div class="header">
+      <a href="index.html"><img class="site-logo" src="images/icertify-logo.png" width="150"></a>
+      <nav>
+        <ul class="nav_links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tutorial.html">Tutorial</a></li>
+          <li><a href="generate.html">Generate</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+      <a href="https://github.com/Haraya-Automata/e-certificate-maker-site/issues" target="_blank"
+        class="contact">Contact</a>
+    </div>
 
-  <div class="page-divider"> 
     <div class="container">
-        <div class="options">
-          <label> Name of the Issuer: </label>
-          <input type="text" name="name">
-          <label for="myfile">Select a file :</label>
-          <input type="file" id="myfile" name="myfile">
-        </div> 
-      
-        <div class="options">
-          <label> Date Issued: </label>
-          <input type="text" name="date">
-        </div>
-      
-        <div class="options">
-          <h1 class="option-title">Options</h1>
-        </div>
 
-        <div class="options">
-          <label>Font:</label>
-          <input type="font" name="font">
-        </div>
+      <div class="container-1">
+        <form id="form" enctype="multipart/form-data">
+          <div class="container-1-1">
+            <div class="box">
+              <label for="issuer">Name of Issuer: </label><br>
+              <input type="text" name="issuer" id="issuer">
+            </div>
 
-        <div class="options">
-          <label>Font Size:</label>
-          <input type="font" name="font">
-        </div>
-     
-        <div class="options"> 
-          <label>X: </label>
-          <input type="x" name="font">
-        </div>
-   
-        <div class="options">
-          <label>Y: </label>
-          <input type="y" name="y">
-        </div>
+            <div class="box">
+              <label for="date">Date Issued: </label><br>
+              <input type="date" name="date" id="date">
+            </div>
 
-        <div class="options">
-          <label>Color: </label>
-          <input type="color" name="color">
-        </div>
-      
-        
+            <div class="box" id="file">
+              <input type="file" id="certificate" name="certificate" accept=".pdf">
+            </div>
 
-        <div class="options">
-        <h1 class="option-title">Options for QR Code</h1>
-        </div>
+            <div class="box" id="names">
+              <label for="names">Names: </label><br>
+              <textarea name="names" id="names" cols="30" rows="3"></textarea>
+            </div>
 
-        <div class="options">
-          <label>X:</label>
-          <input type="x" name="font">
-        </div>
+            <div class="box">
+              <label>Font Size:</label>
+              <input type="font" name="font">
+            </div>
 
-        <div class="options">
-          <label>Y:</label>
-          <input type="y" name="y">
-        </div>
+            <div class="box">
+              <label for="font">Select a font:</label>
+              <select name="font" id="font">
+                <option value="Courier">Courier</option>
+                <option value="Courier-Bold">Courier-Bold</option>
+                <option value="Courier-BoldOblique">Courier-BoldOblique</option>
+                <option value="Courier-Oblique">Courier-Oblique</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Helvetica-Bold">Helvetica-Bold</option>
+                <option value="Helvetica-BoldOblique">Helvetica-BoldOblique</option>
+                <option value="Helvetica-Oblique">Helvetica-Oblique</option>
+                <option value="Times-Roman">Times-Roman</option>
+                <option value="Times-Bold">Times-Bold</option>
+                <option value="Times-BoldItalic">Times-BoldItalic</option>
+                <option value="Times-Italic">Times-Italic</option>
+              </select>
 
-        <div class="options">
-          <input type="submit" name="submit" value="Submit">
-        </div>
+              <div class="box" id="color">
+                <label for="color">Select a color: </label><br>
+                <select name="color" id="color">
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Red">Red</option>
+                  <option value="Green">Green</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Yellow">Yellow</option>
+                  <option value="Violet">Violet</option>
+                  <option value="Orange">Orange</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-1-4">
+            <div class="container-1-2">
+              <div class="box" id="name-title">
+                <h1 class="option-title">Name Options</h1>
+              </div>
+
+              <div class="box" id="x-name">
+                <label>X position(Name): </label>
+                <input type="text" name="xName">
+              </div>
+
+              <div class="box" id="y-name">
+                <label>Y position(Name): </label>
+                <input type="text" name="yName">
+              </div>
+            </div>
+
+            <div class="container-1-3">
+              <div class="box" id="qr-title">
+                <h1 class="option-title">QR Options</h1>
+              </div>
+
+              <div class="box" id="x-qr">
+                <label>X position(QR):</label><br>
+                <input type="text" name="xQr">
+              </div>
+
+              <div class="box" id="y-qr">
+                <label>Y position(QR):</label><br>
+                <input type="text" name="yQr">
+              </div>
+            </div>
+          </div>
+          <div class="button">
+            <button id="button" type="button">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="container-2">
+        <iframe id="preview" title="Certificate Preview"></iframe>
+      </div>
     </div>
-    <div class="iframe-preview">
-      <iframe src="" title="Certificate Preview"></iframe>
-    </div>
-  </div>   
-  <br>
+  </div>
 </body>
+
 </html>
