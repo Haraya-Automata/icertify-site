@@ -75,50 +75,56 @@ ul li {
   background-color: #4b429a;
 }
 
-
 .bg-gradient {
   height: 100vh;
   background-image: linear-gradient(to bottom, #222831, #262c35, #2a3039, #2f343d, #333841, #38424e, #3c4c5b, #3f5768, #3c6b80, #338196, #2197a8, #00adb5);
   position: relative;
 }
 
+.page-title {
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 10px;
+  color: #827bc6;
+}
 
-.container {
-  padding: 20px;
-  max-width: 700px;
-
-  height: 500px;
-
-  align-items: center;
+.container-title {
+  padding-top: 30px;
+  display: flex;
   justify-content: center;
-
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
   margin: auto;
 }
 
-.container .card {
-  margin: 54px;
-  padding-top: 10px;
-  height: 360px;
-  text-align: center;
+.container-body {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-top: 20px;
+}
 
+.container-body-1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 10px;
+}
+
+.container-body-2 {
+  padding-left: 20px;
   font-family: "Abel", sans-serif;
-  font-size: 24px;
-  font-weight: normal;
+  font-size: 31px;
+  font-weight: bold;
   color: #fff;
 }
 
-p {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 10;
+.haraya-logo {
+  padding-top: 20px;
+  padding-left: 10px;
 }
-
 
 footer {
   position: absolute;
@@ -152,19 +158,3 @@ footer p {
   font-size: 14px;
   text-align: center;
 }
-
-.page-title {
-  margin: 40px;
-  text-align: center;
-
-  font-family: "Orbitron", sans-serif;
-  font-size: 34px;
-  font-weight: bold;
-  color: #fff;
-
-  letter-spacing: 10px;
-
-  color: #827bc6;
-
-}
-
