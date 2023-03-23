@@ -15,12 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles/generate-style.css">
+	<script async src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script defer src="scripts/generate-events.js"></script>
   <title>Generate</title>
 </head>
 
 <body>
-  <!-- Header -->
   <div class="bg-gradient">
     <div class="header">
       <a href="index.html"><img class="site-logo" src="images/icertify-logo.png" width="150"></a>
@@ -37,7 +37,6 @@
     </div>
 
     <div class="container">
-
       <div class="container-1">
         <form id="form" enctype="multipart/form-data">
           <div class="container-1-1">
@@ -51,8 +50,8 @@
               <input type="date" name="date" id="date">
             </div>
 
-            <div class="box" id="file">
-              <input type="file" id="certificate" name="certificate" accept=".pdf">
+            <div class="box file">
+              <input type="file" id="file" name="file" accept=".pdf">
             </div>
 
             <div class="box" id="names">
@@ -62,37 +61,37 @@
 
             <div class="box">
               <label>Font Size:</label>
-              <input type="font" name="font">
+              <input type="number" name="size" value="30">
             </div>
 
             <div class="box">
               <label for="font">Select a font:</label>
               <select name="font" id="font">
                 <option value="Courier">Courier</option>
-                <option value="Courier-Bold">Courier-Bold</option>
-                <option value="Courier-BoldOblique">Courier-BoldOblique</option>
-                <option value="Courier-Oblique">Courier-Oblique</option>
+                <option value="Courier-Bold">Courier Bold</option>
+                <option value="Courier-BoldOblique">Courier Bold Oblique</option>
+                <option value="Courier-Oblique">Courier Oblique</option>
                 <option value="Helvetica">Helvetica</option>
-                <option value="Helvetica-Bold">Helvetica-Bold</option>
-                <option value="Helvetica-BoldOblique">Helvetica-BoldOblique</option>
-                <option value="Helvetica-Oblique">Helvetica-Oblique</option>
-                <option value="Times-Roman">Times-Roman</option>
-                <option value="Times-Bold">Times-Bold</option>
-                <option value="Times-BoldItalic">Times-BoldItalic</option>
-                <option value="Times-Italic">Times-Italic</option>
+                <option value="Helvetica-Bold">Helvetica Bold</option>
+                <option value="Helvetica-BoldOblique">Helvetica Bold Oblique</option>
+                <option value="Helvetica-Oblique">Helvetica Oblique</option>
+                <option value="Times-Roman">Times New Roman</option>
+                <option value="Times-Bold">Times New Roman Bold</option>
+                <option value="Times-BoldItalic">Times New Roman Bold Italic</option>
+                <option value="Times-Italic">Times New Roman Italic</option>
               </select>
 
               <div class="box" id="color">
                 <label for="color">Select a color: </label><br>
                 <select name="color" id="color">
-                  <option value="Black">Black</option>
-                  <option value="White">White</option>
-                  <option value="Red">Red</option>
-                  <option value="Green">Green</option>
-                  <option value="Blue">Blue</option>
-                  <option value="Yellow">Yellow</option>
-                  <option value="Violet">Violet</option>
-                  <option value="Orange">Orange</option>
+                  <option value="black">Black</option>
+                  <option value="white">White</option>
+                  <option value="red">Red</option>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="violet">Violet</option>
+                  <option value="orange">Orange</option>
                 </select>
               </div>
             </div>
@@ -105,13 +104,13 @@
               </div>
 
               <div class="box" id="x-name">
-                <label>X position(Name): </label>
-                <input type="text" name="xName">
+                <label>X position (Name): </label>
+                <input type="number" name="xName" value="-350">
               </div>
 
               <div class="box" id="y-name">
-                <label>Y position(Name): </label>
-                <input type="text" name="yName">
+                <label>Y position (Name): </label>
+                <input type="number" name="yName" value="50">
               </div>
             </div>
 
@@ -121,13 +120,13 @@
               </div>
 
               <div class="box" id="x-qr">
-                <label>X position(QR):</label><br>
-                <input type="text" name="xQr">
+                <label>X position (QR):</label><br>
+                <input type="number" name="xQr" value="470">
               </div>
 
               <div class="box" id="y-qr">
-                <label>Y position(QR):</label><br>
-                <input type="text" name="yQr">
+                <label>Y position (QR):</label><br>
+                <input type="number" name="yQr" value="330">
               </div>
             </div>
           </div>
@@ -142,5 +141,4 @@
     </div>
   </div>
 </body>
-
 </html>

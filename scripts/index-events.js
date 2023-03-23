@@ -6,15 +6,15 @@ function isLogEmpty() {
   if (localStorage.getItem('log')) {
     consoleStyle = 'block';
     buttonStyle = 'none';
-    color = 'lightcoral';
+    color = 'pink';
 
     message = "NOTE: Clicking on page links or refreshing will lose your progress."
     localStorage.removeItem('log');
-    setInterval(() => { 
+    setInterval(() => {
       console.value += `#${count++}: Sending request to server\n`;
       console.scrollTop = console.scrollHeight;
     }, 1000);
-  } 
+  }
   console.style.display = consoleStyle;
   button.style.display = buttonStyle;
   text.innerText = message;
