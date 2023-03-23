@@ -13,8 +13,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="styles/home-style.css">
+
+  <link rel="stylesheet" href="styles/verify-style.css">
+  <script defer src="scripts/verify-events.js"></script>
   <title>Verify</title>
 </head>
 
@@ -34,21 +35,23 @@
         class="contact">Contact</a>
     </div>
 
-
-    <div class="container">
+    <div class="container-title">
       <div class="page-title">
-        <h4>Hello World,</h4>
-        <h3 class="typewriter">Welcome to iCertify.</h3>
+        <h2>Verification</h2>
       </div>
+    </div>
 
-      <div class="card">
-        <h4>an automated electronic certificate maker by Haraya Automata.</h4>
+    <div class="container-body">
+      <div class="container-body-1">
+        <h2>Name:</h2>
+        <h2>Issuer:</h2>
+        <h2>Date:</h2>
       </div>
-
-      <div class="button-box">
-        <a href="generate.html" target="_blank" class="start">Get Started</a>
+      <div class="container-body-2">
+        <h3 id="name"></h3>
+        <h3 id="issuer"></h3>
+        <h3 id="date"></h3>
       </div>
-
     </div>
 
     <footer>
