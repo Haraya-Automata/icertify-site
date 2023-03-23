@@ -56,6 +56,7 @@ async function drawName(cert, options) {
   }
   isNameTooLong(name, drawOptions);
   page.drawText(name, drawOptions);
+  console.log(drawOptions.size);
 }
 
 async function drawQr(cert, options) {
