@@ -1,18 +1,43 @@
+const form = document.getElementById('form');
 const elements = document.getElementById('form').elements;
 const preview = document.getElementById('preview');
 const button = document.getElementById('button');
+
 const dropdowns = ['color', 'font'];
 const numbers = ['xName', 'yName', 'xQr', 'yQr'];
 
-setBorderColor(elements);
+setBorderColor();
 addChangeEventListeners();
 
-button.addEventListener('click', () => {
-  if (validateInputs()) {
-    localStorage.setItem('log', 'true');
+button.addEventListener('click', async () => {
+  console.clear();
+  for (element of elements) {
+    console.log(`name: ${element.name}, value: ${element.value}`);
+  }
+
+  if (validateInputs() && isLoggedIn()) {
+    const url = await submitForm();
+    localStorage.setItem('log', url);
     location.href = 'index.html';
+  } else if (!isLoggedIn()) {
+    location.href = 'login.html';
   }
 });
+
+async function submitForm() {
+  const options = {
+    method: 'POST',
+    body: new FormData(form)
+  };
+
+  const response = await fetch('https://icertify-server.onrender.com/generate', options)
+    .catch(error => console.error('ERROR: there is a problem in submitting form', error));
+  return response.text();
+}
+
+function isLoggedIn() {
+  return localStorage.getItem('authorized');
+}
 
 function validateInputs() {
   for (let element of elements) {
@@ -56,7 +81,6 @@ async function drawName(cert, options) {
   }
   isNameTooLong(name, drawOptions);
   page.drawText(name, drawOptions);
-  console.log(drawOptions.size);
 }
 
 async function drawQr(cert, options) {
@@ -111,10 +135,10 @@ async function refreshPreview() {
 
 function getOptions() {
   return {
-    xName: elements['xName'].value || 0,
-    yName: elements['yName'].value || 0,
-    xQr: elements['xQr'].value || 0,
-    yQr: elements['yQr'].value || 0,
+    xName: elements['xName'].value || -350,
+    yName: elements['yName'].value || 50,
+    xQr: elements['xQr'].value || 470,
+    yQr: elements['yQr'].value || 330,
     size: elements['size'].value || 30,
     font: elements['font'].value,
     color: elements['color'].value
@@ -172,7 +196,7 @@ function setFormValue(element) {
   }
 }
 
-function setBorderColor(elements) {
+function setBorderColor() {
   for (let element of elements) {
     if (!element.value) element.style.borderColor = 'red';
   }
