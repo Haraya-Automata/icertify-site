@@ -14,7 +14,7 @@ buttonSubmit.addEventListener('click', () => {
       body: new FormData(form)
     };
 
-    fetch('/verify', options)
+    fetch('https://icertify-server.onrender.com/verify', options)
       .then(res => isAuthorized(res.ok))
       .catch(error => console.error('ERROR: there is a problem in fetching authorization.', error));   
   }

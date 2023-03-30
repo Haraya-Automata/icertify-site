@@ -30,7 +30,7 @@ function isLogEmpty(defaultOptions, logOptions) {
 }
 
 function getMessage(url) {
-  const eventSource = new EventSource(url);
+  const eventSource = new EventSource(`https://icertify-server.onrender.com/${url}`);
   console.value += `INFO: request created to server\n`;
   console.value += `INFO: form data is submitted\n`;
 

@@ -30,7 +30,7 @@ async function submitForm() {
     body: new FormData(form)
   };
 
-  const response = await fetch('/generate', options)
+  const response = await fetch('https://icertify-server.onrender.com/generate', options)
     .catch(error => console.error('ERROR: there is a problem in submitting form', error));
   return response.text();
 }
