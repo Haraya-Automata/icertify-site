@@ -30,7 +30,7 @@ async function submitForm() {
     body: new FormData(form)
   };
 
-  const response = await fetch('https://icertify-server.onrender.com/generate', options)
+  const response = await fetch('/generate', options)
     .catch(error => console.error('ERROR: there is a problem in submitting form', error));
   return response.text();
 }
@@ -79,7 +79,6 @@ async function drawName(cert, options) {
     size: Number(options.size),
     color: getRGB(options.color)
   }
-  isNameTooLong(name, drawOptions);
   page.drawText(name, drawOptions);
 }
 
@@ -94,14 +93,6 @@ async function drawQr(cert, options) {
     width: 60,
     height: 60
   });
-}
-
-function isNameTooLong(name, options) {
-  if (name.length >= 15 && name.length <= 30) {
-    options.size -= 15;
-  } else if (name.length > 30) {
-    options.size -= 20;
-  }
 }
 
 function isInputValid(element) {
@@ -165,7 +156,7 @@ function getCondition(element, name = null) {
     date: Boolean(element.value),
     names: /^[A-Za-z].{6,}/.test(element.value),
     size: /^[1-9][0-9]{0,1}$/.test(element.value),
-    position: /^[-1-9][0-9]{0,3}$/.test(element.value)
+    position: /^[-01-9][0-9]{0,3}$/.test(element.value)
   };
 
   if (element.name === 'file') {
