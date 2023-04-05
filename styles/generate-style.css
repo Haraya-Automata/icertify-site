@@ -47,8 +47,8 @@ ul li {
 }
 
 .header ul li a:hover {
-	background-color: #393E46;
-	color: #827bc6;
+	background-color: #051937;
+	color: #bfba21;
 }
 
 .site-logo {
@@ -57,7 +57,7 @@ ul li {
 
 .contact {
 	padding: 9px 25px;
-	background-color: #827bc6;
+	background-color: #dcd61c;
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
@@ -72,12 +72,14 @@ ul li {
 }
 
 .contact:hover {
-	background-color: #4b429a;
+	background-color: #bfba21;
 }
+
 
 .bg-gradient {
 	height: 100vh;
-	background-image: linear-gradient(to bottom, #222831, #262c35, #2a3039, #2f343d, #333841, #38424e, #3c4c5b, #3f5768, #3c6b80, #338196, #2197a8, #00adb5);
+	width: 100vw;
+	background-image: linear-gradient(to bottom, #051937, #00214f, #002968, #093181, #1f379a);
 	position: relative;
 }
 
@@ -193,7 +195,7 @@ input[type=file] {
 	width: 670px;
 	height: 450px;
 	background-color: #fff;
-	border-color: #827bc6;
+	border-color: #dcd61c;
 	border-width: 5px;
 	border-radius: 20px;
 }
@@ -206,7 +208,7 @@ input[type=file] {
 
 button {
 	padding: 9px 90px;
-	background-color: #00c9b7;
+	background-color: #dcd61c;
 	border: none;
 	border-radius: 20px;
 	text-transform: uppercase;
@@ -217,10 +219,45 @@ button {
 }
 
 button:hover {
-	background-color: #089f92;
+	background-color: #bfba21;
 }
 
 .option-title {
-	color: #00c9b7;
-	text-align: center;
+	color: #dcd61c;
+	text-align: center; 
 }
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	top: -5px;
+	left: 110%;
+  }
+  
+  .tooltip:hover .tooltiptext {
+	visibility: visible;
+  }
+
+  .tooltip .tooltiptext::after {
+	content: " ";
+	position: absolute;
+	top: 50%;
+	right: 100%; /* To the left of the tooltip */
+	margin-top: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent black transparent transparent;
+  }
