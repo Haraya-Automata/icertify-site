@@ -47,8 +47,8 @@ ul li {
 }
 
 .header ul li a:hover {
-	background-color: #393E46;
-	color: #827bc6;
+	background-color: #051937;
+	color: #bfba21;
 }
 
 .site-logo {
@@ -57,7 +57,7 @@ ul li {
 
 .contact {
 	padding: 9px 25px;
-	background-color: #827bc6;
+	background-color: #dcd61c;
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
@@ -72,13 +72,13 @@ ul li {
 }
 
 .contact:hover {
-	background-color: #4b429a;
+	background-color: #bfba21;
 }
 
 .bg-gradient {
 	height: 100vh;
 	width: 100vw;
-	background-image: linear-gradient(to bottom, #222831, #262c35, #2a3039, #2f343d, #333841, #38424e, #3c4c5b, #3f5768, #3c6b80, #338196, #2197a8, #00adb5);
+	background-image: linear-gradient(to bottom, #051937, #00214f, #002968, #093181, #1f379a);
 	position: relative;
 }
 
@@ -103,7 +103,7 @@ ul li {
 	font-size: 34px;
 	font-weight: bold;
 	letter-spacing: 10px;
-	color: #827bc6;
+	color: #dcd61c;
 }
 
 .console {
@@ -130,7 +130,7 @@ ul li {
 
 .start {
 	padding: 9px 25px;
-	background-color: #827bc6;
+	background-color: #dcd61c;
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
@@ -145,7 +145,7 @@ ul li {
 }
 
 .start:hover {
-	background-color: #4b429a;
+	background-color: #bfba21;
 }
 
 h4 {
