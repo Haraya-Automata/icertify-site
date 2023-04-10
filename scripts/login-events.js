@@ -1,4 +1,3 @@
-
 const username = document.getElementById('username');
 const password = document.getElementById('password');
 const form = document.getElementById('form');
@@ -7,6 +6,8 @@ const buttonSubmit = document.getElementById('button-submit');
 
 setBorderColor();
 
+if (localStorage.getItem('authorized')) window.history.back();
+
 buttonSubmit.addEventListener('click', () => {
   if (validate(username.value) && validate(password.value)) {
     const options = {
@@ -14,9 +15,9 @@ buttonSubmit.addEventListener('click', () => {
       body: new FormData(form)
     };
 
-    fetch('https://icertify-server.onrender.com/verify', options)
+    fetch('https://icertify-server.onrender.com/login', options)
       .then(res => isAuthorized(res.ok))
-      .catch(error => console.error('ERROR: there is a problem in fetching authorization.', error));   
+      .catch(error => console.error('ERROR: there is a problem in fetching authorization.', error));
   }
 });
 
@@ -37,7 +38,7 @@ function showOrHide() {
 }
 
 function validate(value) {
-  return /^[A-Za-z].{3,7}$/.test(value);
+  return /^[A-Za-z][A-Za-z0-9]{7}$/.test(value);
 }
 
 function setBorderColor() {

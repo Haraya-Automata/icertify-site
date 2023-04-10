@@ -2,17 +2,26 @@ const form = document.getElementById('form');
 const elements = document.getElementById('form').elements;
 const preview = document.getElementById('preview');
 const button = document.getElementById('button');
+const date = elements['date'];
 
 const dropdowns = ['color', 'font'];
 const numbers = ['xName', 'yName', 'xQr', 'yQr'];
 
+let imageBytes;
+
+start();
+getQR();
 setBorderColor();
 addChangeEventListeners();
+
+date.addEventListener('keydown', (e) => e.preventDefault());
 
 button.addEventListener('click', async () => {
   console.clear();
   for (element of elements) {
-    console.log(`name: ${element.name}, value: ${element.value}`);
+    if (element.name) {
+      console.log(`name: ${element.name}, value: ${element.value}`);
+    }
   }
 
   if (validateInputs() && isLoggedIn()) {
@@ -25,14 +34,28 @@ button.addEventListener('click', async () => {
 });
 
 async function submitForm() {
-  const options = {
-    method: 'POST',
-    body: new FormData(form)
-  };
+  return new Promise((resolve, reject) => {
+    const options = {
+      method: 'POST',
+      body: new FormData(form)
+    };
+    fetch('https://icertify-server.onrender.com/generate', options)
+      .then(res => resolve(res.text()))
+      .catch(err => console.error('ERROR: there is a problem in submitting form', err));
+  });
+}
 
-  const response = await fetch('https://icertify-server.onrender.com/generate', options)
-    .catch(error => console.error('ERROR: there is a problem in submitting form', error));
-  return response.text();
+async function getQR() {
+  if (!imageBytes) {
+    let response = await fetch('https://icertify.vercel.app/images/example-qr.png');
+    imageBytes = await response.arrayBuffer();
+  }
+}
+
+function start() {
+  fetch('https://icertify-server.onrender.com/start')
+    .then(res => res.ok && console.log('server has started'))
+    .catch(err => console.error('ERROR: an error has occured while starting the server', err));
 }
 
 function isLoggedIn() {
@@ -64,14 +87,15 @@ function addChangeEventListeners() {
 async function draw(file, options) {
   const pdf = await PDFLib.PDFDocument.load(file);
   const cert = await pdf.copy();
+  cert.setTitle('Juan Dela Cruz');
   await Promise.all([drawName(cert, options), drawQr(cert, options)]);
-  return cert.saveAsBase64({ dataUri: true });
+  return cert.save();
 }
 
 async function drawName(cert, options) {
   const fontStyle = await cert.embedFont(options.font);
   const page = cert.getPage(0);
-  const name = 'Juan dela Cruz';
+  const name = 'Juan Dela Cruz';
   const drawOptions = {
     x: page.getWidth() / 2 + Number(options.xName),
     y: page.getHeight() / 2 + Number(options.yName),
@@ -83,8 +107,6 @@ async function drawName(cert, options) {
 }
 
 async function drawQr(cert, options) {
-  const response = await fetch('https://icertify.vercel.app/images/example-qr.png');
-  const imageBytes = await response.arrayBuffer();
   const image = await cert.embedPng(imageBytes);
   const page = cert.getPage(0);
   page.drawImage(image, {
@@ -118,8 +140,10 @@ function isInputValid(element) {
 async function refreshPreview() {
   let file = '';
   if (getCondition(elements['file'])) {
-    file = await blobToBase64(elements['file'].files[0]);
+    URL.revokeObjectURL(file);
+    file = await fileToArrayBuffer(elements['file'].files[0]);
     file = await draw(file, getOptions());
+    file = URL.createObjectURL(new Blob([file], { type: 'application/pdf' }));
   }
   preview.src = file;
 }
@@ -152,9 +176,8 @@ function getRGB(color) {
 
 function getCondition(element, name = null) {
   let conditions = {
-    issuer: /^[A-Za-z].{2,30}$/.test(element.value),
+    issuer: /^[A-Za-z][A-Za-z\.\'\s-]{4,45}$/.test(element.value),
     date: Boolean(element.value),
-    names: /^[A-Za-z].{6,}/.test(element.value),
     size: /^[1-9][0-9]{0,1}$/.test(element.value),
     position: /^[-01-9][0-9]{0,3}$/.test(element.value)
   };
@@ -162,27 +185,45 @@ function getCondition(element, name = null) {
   if (element.name === 'file') {
     conditions.file = element?.files[0]?.type === 'application/pdf' &&
       element?.files[0]?.size <= 5000000;
+  } else if (element.name === 'names') {
+    conditions.names = validateNames(element.value);
   }
 
   return name ? conditions[name] : conditions[element.name];
+}
+
+function validateNames(names) {
+  let isValid = true;
+  names = names
+    .replace(/\r\n/g, '\n')
+    .split('\n')
+    .filter(name => name !== '');
+
+  for (let name of names) {
+    if (!/^[A-Za-z][A-Za-z\.\'\s-]{4,45}$/.test(name)) {
+      isValid = false;
+      break;
+    }
+  }
+  return isValid;
 }
 
 function changeBorderColor(element, color) {
   element.style.borderColor = color;
 }
 
-function blobToBase64(blob) {
+function fileToArrayBuffer(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onloadend = () => resolve(reader.result);
-    reader.readAsDataURL(blob);
+    reader.readAsArrayBuffer(file);
   });
 }
 
 function setFormValue(element) {
   let value = localStorage.getItem(element.name);
   if (value && element.name !== 'file') {
-    element.value = value;
+    (element.name === 'date') ? element.valueAsDate = new Date() : element.value = value;
     element.dispatchEvent(new Event('change'));
   }
 }

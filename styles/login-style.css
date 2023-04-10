@@ -47,8 +47,8 @@ ul li {
 }
 
 .header ul li a:hover {
-  background-color: #393E46;
-  color: #827bc6;
+  background-color: #051937;
+  color: #bfba21;
 }
 
 .site-logo {
@@ -57,7 +57,7 @@ ul li {
 
 .contact {
   padding: 9px 25px;
-  background-color: #827bc6;
+  background-color: #dcd61c;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -72,12 +72,13 @@ ul li {
 }
 
 .contact:hover {
-  background-color: #4b429a;
+  background-color: #bfba21;
 }
 
 .bg-gradient {
   height: 100vh;
-  background-image: linear-gradient(to bottom, #222831, #262c35, #2a3039, #2f343d, #333841, #38424e, #3c4c5b, #3f5768, #3c6b80, #338196, #2197a8, #00adb5);
+  width: 100vw;
+  background-image: linear-gradient(to bottom, #051937, #00214f, #002968, #093181, #1f379a);
   position: relative;
 }
 
@@ -86,9 +87,8 @@ ul li {
   font-family: "Orbitron", sans-serif;
   font-size: 34px;
   font-weight: bold;
-  color: #fff;
   letter-spacing: 10px;
-  color: #827bc6;
+  color: #dcd61c;
 }
 
 .container-title {
@@ -140,8 +140,8 @@ ul li {
   left: 250px;
 
   padding: 5px 5px;
-  background-color: #00c9b7;
-  border-radius: 5px;
+  background-color: #dcd61c;
+  border-radius: 10px;
   border: none;
   font-family: "Abel", sans-serif;
   font-weight: bold;
@@ -156,8 +156,8 @@ ul li {
   right: 53px;
 
   padding: 5px 92px;
-  background-color: #00c9b7;
-  border-radius: 5px;
+  background-color: #dcd61c;
+  border-radius: 10px;
   border: none;
   font-family: "Abel", sans-serif;
   font-weight: bold;
@@ -169,7 +169,7 @@ ul li {
 
 #button-show:hover,
 #button-submit:hover {
-  background-color: #089f92;
+  background-color: #bfba21;
 }
 
 input {

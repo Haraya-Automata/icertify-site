@@ -1,4 +1,4 @@
-const console = document.getElementById('console');
+const consoleBox = document.getElementById('console');
 const text = document.getElementById('text');
 const button = document.getElementById('button');
 
@@ -16,45 +16,52 @@ const logOptions = {
   message: 'NOTE: Clicking on page links or refreshing will lose your progress.'
 }
 
+start();
 isLogEmpty(defaultOptions, logOptions);
 
+function start() {
+  fetch('https://icertify-server.onrender.com/start')
+    .then(res => res.ok && console.log('server has started'))
+    .catch(err => console.error('ERROR: an error has occured while starting the server', err));
+}
+
 function isLogEmpty(defaultOptions, logOptions) {
-  const url = localStorage.getItem('log');
-  if (url) {
+  const path = localStorage.getItem('log');
+  if (path) {
     localStorage.removeItem('log');
-    getMessage(url);
+    getMessage(path);
     setValues(logOptions);
   } else {
     setValues(defaultOptions);
   }
 }
 
-function getMessage(url) {
-  const eventSource = new EventSource(`https://icertify-server.onrender.com${url}`);
-  console.value += `INFO: request created to server\n`;
-  console.value += `INFO: form data is submitted\n`;
+function getMessage(path) {
+  const eventSource = new EventSource(`https://icertify-server.onrender.com${path}`);
+  consoleBox.value += `INFO: request created to server\n`;
+  consoleBox.value += `INFO: form data is submitted\n`;
 
   eventSource.addEventListener('message', (event) => {
-    console.value += `INFO: ${event.data}\n`;
+    consoleBox.value += `INFO: ${event.data}\n`;
     if (event.data === 'END') {
-      eventSource.close(); 
-      console.value += 'INFO: closed connection to the server';
+      eventSource.close();
+      consoleBox.value += 'INFO: closed connection to the server';
     }
     scrollDown();
   });
 
   eventSource.addEventListener('error', (error) => {
-    console.value += 'ERROR: an error has occured\n', error;
+    consoleBox.value += 'ERROR: an error has occured\n', error;
     scrollDown();
   });
 }
 
 function scrollDown() {
-  console.scrollTop = console.scrollHeight;
+  consoleBox.scrollTop = consoleBox.scrollHeight;
 }
 
 function setValues(options) {
-  console.style.display = options.consoleStyle;
+  consoleBox.style.display = options.consoleStyle;
   button.style.display = options.buttonStyle;
   text.style.color = options.color;
   text.innerText = options.message;
