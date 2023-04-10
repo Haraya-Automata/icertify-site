@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
   <link rel="manifest" href="favicon/site.webmanifest">
@@ -15,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles/generate-style.css">
-	<script async src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script defer src="scripts/generate-events.js"></script>
   <title>Generate</title>
 </head>
@@ -38,7 +39,7 @@
 
     <div class="container">
       <div class="container-1">
-        <form id="form">
+        <form id="form" autocomplete="off">
           <div class="container-1-1">
             <div class="box">
               <label for="issuer">Name of Issuer: </label><br>
@@ -99,41 +100,58 @@
 
           <div class="container-1-4">
             <div class="container-1-2">
-              <div class="box" id="name-title">
-                <div class="tooltip"><h1 class="option-title">Name Options</h1>  <!--Tooltip-->
-                  <span class="tooltiptext">Sample Text</span>
+              <div class="box title" id="name-title">
+                <div class="tooltip">
+                  <h1 class="option-title">Name Options</h1>
+                  <span class="tooltiptext">
+                    X refers to the horizontal part while the
+                    Y means the vertical part of the certificate.<br>
+                    The starting point is in the middle (0, 0).<br>
+                    Both values can be negative or positive.<br>
+                    X = -100 (left) or 100 (right)<br>
+                    Y = -100 (bottom) or 100 (top)
+                  </span>
                 </div>
               </div>
 
               <div class="box" id="x-name">
-                <label>X position (Name): </label>
+                <label>X position:</label>
                 <input type="number" name="xName" value="-350">
               </div>
 
               <div class="box" id="y-name">
-                <label>Y position (Name): </label>
+                <label>Y position:</label>
                 <input type="number" name="yName" value="50">
               </div>
             </div>
 
             <div class="container-1-3">
-              <div class="box" id="qr-title">
-                <div class="tooltip"><h1 class="option-title">QR Options</h1>    <!--Tooltip-->
-                  <span class="tooltiptext">Sample Text</span>
+              <div class="box title" id="qr-title">
+                <div class="tooltip">
+                  <h1 class="option-title">QR Options</h1>
+                  <span class="tooltiptext">
+                    X refers to the horizontal part while the
+                    Y means the vertical part of the certificate.<br>
+                    The starting point is in the bottom left corner(0, 0).<br>
+                    Both values can be negative or positive.<br>
+                    X = -100 (left) or 100 (right)<br>
+                    Y = -100 (bottom) or 100 (top)
+                  </span>
                 </div>
               </div>
 
               <div class="box" id="x-qr">
-                <label>X position (QR):</label><br>
+                <label>X position:</label><br>
                 <input type="number" name="xQr" value="470">
               </div>
 
               <div class="box" id="y-qr">
-                <label>Y position (QR):</label><br>
+                <label>Y position:</label><br>
                 <input type="number" name="yQr" value="330">
               </div>
             </div>
           </div>
+
           <div class="button">
             <button id="button" type="button">Submit</button>
           </div>
@@ -145,4 +163,5 @@
     </div>
   </div>
 </body>
+
 </html>

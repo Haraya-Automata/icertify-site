@@ -1,14 +1,29 @@
-
 const url = new URL(location.href);
-const base64 = url.searchParams.get('q');
+const query = url.searchParams.get('q');
 
-history.pushState('verify', 'Title', 'verify.html');
+history.pushState('verify', '', 'verify.html');
 
-if (base64) {
-  const data = JSON.parse(atob(base64));
-  setValue(data);
-} else {
-  setValue({ name: 'Nothing', issuer: 'Nothing', date: 'Nothing' });
+setValue(evaluate(query));
+
+function evaluate(query) {
+  let data; 
+  if (query) data = JSON.parse(atob(query));
+
+  return (data && isValid(data)) ? data :
+    { name: 'Nothing', issuer: 'Nothing', date: 'Nothing' };
+}
+
+function isValid(data) {
+  let bool = true;
+  let keys = Object.keys(data);
+
+  for (let key of keys) {
+    if (!['name', 'issuer', 'date'].includes(key) || keys.length !== 3) {
+      bool = false;
+      break;
+    }
+  }
+  return bool;
 }
 
 function setValue(data) {
@@ -16,3 +31,4 @@ function setValue(data) {
     document.getElementById(id).innerText = data[id];
   });
 }
+
