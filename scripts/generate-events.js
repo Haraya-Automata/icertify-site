@@ -9,7 +9,6 @@ const numbers = ['xName', 'yName', 'xQr', 'yQr'];
 
 let imageBytes;
 
-start();
 getQR();
 setBorderColor();
 addChangeEventListeners();
@@ -17,17 +16,14 @@ addChangeEventListeners();
 date.addEventListener('keydown', (e) => e.preventDefault());
 
 button.addEventListener('click', async () => {
-  console.clear();
-  for (element of elements) {
-    if (element.name) {
-      console.log(`name: ${element.name}, value: ${element.value}`);
-    }
-  }
+  logInputs();
 
   if (validateInputs() && isLoggedIn()) {
+    button.disabled = true;
     const url = await submitForm();
     localStorage.setItem('log', url);
     location.href = 'index.html';
+    button.disabled = false;
   } else if (!isLoggedIn()) {
     location.href = 'login.html';
   }
@@ -50,12 +46,6 @@ async function getQR() {
     let response = await fetch('https://icertify.vercel.app/images/example-qr.png');
     imageBytes = await response.arrayBuffer();
   }
-}
-
-function start() {
-  fetch('https://icertify-server.onrender.com/start')
-    .then(res => res.ok && console.log('server has started'))
-    .catch(err => console.error('ERROR: an error has occured while starting the server', err));
 }
 
 function isLoggedIn() {
@@ -84,11 +74,119 @@ function addChangeEventListeners() {
   }
 }
 
+function isInputValid(element) {
+  let condition;
+  if (!dropdowns.includes(element.name)) {
+    condition = numbers.includes(element.name) ?
+      getCondition(element, 'position') : getCondition(element);
+    condition ? changeBorderColor(element, 'black') : changeBorderColor(element, 'red');
+  }
+
+  if (condition && element.name !== 'file' ||
+    dropdowns.includes(element.name)) {
+    if (numbers.includes(element.name)) element.value = new Number(element.value);
+    localStorage.setItem(element.name, element.value);
+  }
+
+  if (condition &&
+    ['file', 'number'].includes(element.type) ||
+    [...dropdowns, 'file'].includes(element.name)) {
+    refreshPreview();
+  }
+}
+
+function getCondition(element, name = null) {
+  let conditions = {
+    issuer: /^[A-Za-z][A-Za-z\.\'\s-]{4,44}$/.test(element.value),
+    date: Boolean(element.value),
+    size: /^[1-9][0-9]{0,1}$/.test(element.value),
+    position: /^[-]?[0-9][0-9]{0,2}$/.test(element.value)
+  };
+
+  if (element.name === 'file') {
+    conditions.file = element?.files[0]?.type === 'application/pdf' &&
+      element?.files[0]?.size <= 5000000;
+  } else if (element.name === 'names') {
+    conditions.names = validateNames(element.value);
+  }
+  
+  return name ? conditions[name] : conditions[element.name];
+}
+
+function validateNames(names) {
+  let valid = true;
+  names = names
+    .replace(/\r\n/g, '\n')
+    .split('\n')
+    .filter(name => name !== '');
+  
+  if (names.length > 50) valid = false;
+
+  for (let name of names) {
+    if (!/^[A-Za-z][A-Za-z\.\'\s-]{4,44}$/.test(name)) {
+      valid = false;
+      break;
+    }
+  }
+  return valid;
+}
+
+function setFormValue(element) {
+  let value = localStorage.getItem(element.name);
+  if (value && element.name !== 'file') {
+    if (element.name === 'date') {
+      const utc = new Date().getTime();
+      element.valueAsDate = new Date(utc + 28800000);
+    } else {
+      element.value = value;
+    }
+    element.dispatchEvent(new Event('change'));
+  }
+}
+
+function fileToArrayBuffer(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function logInputs() {
+  console.clear();
+  for (element of elements) {
+    if (element.name) {
+      console.log(`name: ${element.name}, value: ${element.value}`);
+    }
+  }
+}
+
+function changeBorderColor(element, color) {
+  element.style.borderColor = color;
+}
+
+function setBorderColor() {
+  for (let element of elements) {
+    if (!element.value) element.style.borderColor = 'red';
+  }
+}
+
+async function refreshPreview() {
+  let file = '';
+  if (getCondition(elements['file'])) {
+    URL.revokeObjectURL(preview.src);
+    file = await fileToArrayBuffer(elements['file'].files[0]);
+    file = await draw(file, getOptions());
+    file = URL.createObjectURL(new Blob([file], { type: 'application/pdf' }));
+  }
+  preview.src = file;
+}
+
 async function draw(file, options) {
   const pdf = await PDFLib.PDFDocument.load(file);
   const cert = await pdf.copy();
-  cert.setTitle('Juan Dela Cruz');
   await Promise.all([drawName(cert, options), drawQr(cert, options)]);
+  cert.setTitle('Juan Dela Cruz');
   return cert.save();
 }
 
@@ -117,44 +215,13 @@ async function drawQr(cert, options) {
   });
 }
 
-function isInputValid(element) {
-  let condition;
-  if (!dropdowns.includes(element.name)) {
-    condition = numbers.includes(element.name) ?
-      getCondition(element, 'position') : getCondition(element);
-    condition ? changeBorderColor(element, 'black') : changeBorderColor(element, 'red');
-  }
-
-  if (condition && element.name !== 'file' ||
-    dropdowns.includes(element.name)) {
-    localStorage.setItem(element.name, element.value);
-  }
-
-  if (condition &&
-    ['file', 'number'].includes(element.type) ||
-    [...dropdowns, 'file'].includes(element.name)) {
-    refreshPreview();
-  }
-}
-
-async function refreshPreview() {
-  let file = '';
-  if (getCondition(elements['file'])) {
-    URL.revokeObjectURL(file);
-    file = await fileToArrayBuffer(elements['file'].files[0]);
-    file = await draw(file, getOptions());
-    file = URL.createObjectURL(new Blob([file], { type: 'application/pdf' }));
-  }
-  preview.src = file;
-}
-
 function getOptions() {
   return {
-    xName: elements['xName'].value || -350,
-    yName: elements['yName'].value || 50,
-    xQr: elements['xQr'].value || 470,
-    yQr: elements['yQr'].value || 330,
-    size: elements['size'].value || 30,
+    xName: elements['xName'].value,
+    yName: elements['yName'].value,
+    xQr: elements['xQr'].value,
+    yQr: elements['yQr'].value,
+    size: elements['size'].value,
     font: elements['font'].value,
     color: elements['color'].value
   };
@@ -172,64 +239,4 @@ function getRGB(color) {
     violet: rgb(1, 0, 1),
     orange: rgb(1, 0.5, 0)
   }[color];
-}
-
-function getCondition(element, name = null) {
-  let conditions = {
-    issuer: /^[A-Za-z][A-Za-z\.\'\s-]{4,45}$/.test(element.value),
-    date: Boolean(element.value),
-    size: /^[1-9][0-9]{0,1}$/.test(element.value),
-    position: /^[-01-9][0-9]{0,3}$/.test(element.value)
-  };
-
-  if (element.name === 'file') {
-    conditions.file = element?.files[0]?.type === 'application/pdf' &&
-      element?.files[0]?.size <= 5000000;
-  } else if (element.name === 'names') {
-    conditions.names = validateNames(element.value);
-  }
-
-  return name ? conditions[name] : conditions[element.name];
-}
-
-function validateNames(names) {
-  let isValid = true;
-  names = names
-    .replace(/\r\n/g, '\n')
-    .split('\n')
-    .filter(name => name !== '');
-
-  for (let name of names) {
-    if (!/^[A-Za-z][A-Za-z\.\'\s-]{4,45}$/.test(name)) {
-      isValid = false;
-      break;
-    }
-  }
-  return isValid;
-}
-
-function changeBorderColor(element, color) {
-  element.style.borderColor = color;
-}
-
-function fileToArrayBuffer(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.readAsArrayBuffer(file);
-  });
-}
-
-function setFormValue(element) {
-  let value = localStorage.getItem(element.name);
-  if (value && element.name !== 'file') {
-    (element.name === 'date') ? element.valueAsDate = new Date() : element.value = value;
-    element.dispatchEvent(new Event('change'));
-  }
-}
-
-function setBorderColor() {
-  for (let element of elements) {
-    if (!element.value) element.style.borderColor = 'red';
-  }
 }

@@ -10,6 +10,7 @@ if (localStorage.getItem('authorized')) window.history.back();
 
 buttonSubmit.addEventListener('click', () => {
   if (validate(username.value) && validate(password.value)) {
+    buttonSubmit.disabled = true;
     const options = {
       method: 'POST',
       body: new FormData(form)
@@ -24,12 +25,13 @@ buttonSubmit.addEventListener('click', () => {
 function isAuthorized(authorized) {
   if (authorized) {
     localStorage.setItem('authorized', 'true');
-    location.href = 'generate.html'
+    location.href = 'generate.html';
   } else {
     username.value = '';
     password.value = '';
     setBorderColor();
   }
+  buttonSubmit.disabled = false;
 }
 
 function showOrHide() {
@@ -38,7 +40,7 @@ function showOrHide() {
 }
 
 function validate(value) {
-  return /^[A-Za-z][A-Za-z0-9]{7}$/.test(value);
+  return /^[A-Za-z][A-Za-z0-9]{7,11}$/.test(value);
 }
 
 function setBorderColor() {

@@ -157,3 +157,31 @@ footer p {
   font-size: 14px;
   text-align: center;
 }
+
+@media (min-width:481px) and (max-width:610px) {
+  .header {
+    visibility: hidden;
+  }
+
+  h2 {
+    font-size: 41px;
+  }
+
+  .field {
+    font-size: 31px;
+  }
+}
+
+@media (min-width:302px) and (max-width:481px) {
+  .header {
+    visibility: hidden;
+  }
+
+  h2 {
+    font-size: 31px;
+  }
+
+  .field {
+    font-size: 21px;
+  }
+}

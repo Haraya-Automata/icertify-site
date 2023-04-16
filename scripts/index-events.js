@@ -2,7 +2,7 @@ const consoleBox = document.getElementById('console');
 const text = document.getElementById('text');
 const button = document.getElementById('button');
 
-const defaultOptions = {
+let options = {
   consoleStyle: 'none',
   buttonStyle: 'block',
   color: 'white',
@@ -12,28 +12,20 @@ const defaultOptions = {
 const logOptions = {
   consoleStyle: 'block',
   buttonStyle: 'none',
-  color: 'pink',
+  color: 'lightpink',
   message: 'NOTE: Clicking on page links or refreshing will lose your progress.'
 }
 
-start();
-isLogEmpty(defaultOptions, logOptions);
+isLogEmpty();
 
-function start() {
-  fetch('https://icertify-server.onrender.com/start')
-    .then(res => res.ok && console.log('server has started'))
-    .catch(err => console.error('ERROR: an error has occured while starting the server', err));
-}
-
-function isLogEmpty(defaultOptions, logOptions) {
+function isLogEmpty() {
   const path = localStorage.getItem('log');
   if (path) {
-    localStorage.removeItem('log');
     getMessage(path);
-    setValues(logOptions);
-  } else {
-    setValues(defaultOptions);
+    options = logOptions;
+    localStorage.removeItem('log');
   }
+  setValues(options);
 }
 
 function getMessage(path) {
@@ -42,18 +34,31 @@ function getMessage(path) {
   consoleBox.value += `INFO: form data is submitted\n`;
 
   eventSource.addEventListener('message', (event) => {
-    consoleBox.value += `INFO: ${event.data}\n`;
     if (event.data === 'END') {
-      eventSource.close();
-      consoleBox.value += 'INFO: closed connection to the server';
+      closeConnection(eventSource, consoleBox);
+    } else {
+      if (event.data.includes('error')) {
+        consoleBox.value += `ERROR: ${event.data}\n`;
+        closeConnection(eventSource, consoleBox);
+      } else if (event.data.includes('https')) {
+        consoleBox.value += `${event.data}\n`;
+      } else {
+        consoleBox.value += `INFO: ${event.data}\n`;
+      }
     }
     scrollDown();
   });
 
   eventSource.addEventListener('error', (error) => {
-    consoleBox.value += 'ERROR: an error has occured\n', error;
+    consoleBox.value += 'ERROR: an error has occured\n';
+    closeConnection(eventSource, consoleBox);
     scrollDown();
   });
+}
+
+function closeConnection(eventSource, console) {
+  console.value += 'INFO: closed connection to the server';
+  eventSource.close();
 }
 
 function scrollDown() {
