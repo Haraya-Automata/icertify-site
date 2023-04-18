@@ -1,187 +1,33 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-li,
-a {
-  font-family: "Abel", sans-serif;
-  font-weight: 500;
-  font-size: 30px;
-  color: #edf0f1;
-  text-decoration: none;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 10%;
-}
-
-.header ul {
-  text-align: right;
-  padding-left: 20px;
-  align-items: center;
-}
-
-ul li {
-  list-style: none;
-  display: inline-block;
-  padding: 0px 35px;
-
-}
-
-.header ul li a {
-  display: block;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 20px;
-  font-family: "Abel", sans-serif;
-  letter-spacing: 2px;
-  padding: 10px;
-  transition: all ease 0.5s;
-  border-radius: 20px;
-}
-
-.header ul li a:hover {
-  background-color: #051937;
-  color: #bfba21;
-}
-
-.site-logo {
-  cursor: pointer;
-}
-
-.contact {
-  padding: 9px 25px;
-  background-color: #dcd61c;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-
-  text-transform: uppercase;
-  font-family: "Abel", sans-serif;
-
-  font-size: 20px;
-  color: #edf0f1;
-  text-decoration: none;
-}
-
-.contact:hover {
-  background-color: #bfba21;
-}
-
-.bg-gradient {
-  height: 100vh;
-  width: 100vw;
-  background-image: linear-gradient(to bottom, #051937, #00214f, #002968, #093181, #1f379a);
-  position: relative;
-}
-
 .page-title {
+  margin: 2% 0%;
   text-align: center;
-  font-family: "Orbitron", sans-serif;
-  font-size: 34px;
-  font-weight: bold;
-  letter-spacing: 10px;
+
   color: #dcd61c;
-}
-
-.container-title {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-}
-
-.container-body {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  padding-top: 20px;
-}
-
-.container-body-1 {
+  font-size: 1.5rem;
+  font-weight: bold;
   font-family: "Orbitron", sans-serif;
-  font-size: 25px;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 10px;
+  letter-spacing: 0.3rem;
 }
 
-.container-body-2 {
-  padding-left: 20px;
-  font-family: "Abel", sans-serif;
-  font-size: 31px;
-  font-weight: bold;
-  color: #fff;
+h2 {
+  margin: 0;
 }
 
-.haraya-logo {
-  padding-top: 20px;
-  padding-left: 10px;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  height: auto;
-  width: 100vw;
-  font-family: "Abel", sans-serif;
-  padding-top: 40px;
-  color: #fff;
-
+.container {
+  color: white;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  text-align: right;
-  padding-left: 10px;
-  padding-bottom: 10px;
 }
 
-footer .haraya-logo {
-  padding-right: 10px;
-  padding-bottom: 10px;
-
-  position: absolute;
-  top: 1;
-  bottom: 0;
-  left: 1;
-  right: 0;
+.container-label {
+  padding-left: 2%;
+  font-size: 1.05rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.3rem;
 }
 
-footer p {
-  font-size: 14px;
-  text-align: center;
-}
-
-@media (min-width:481px) and (max-width:610px) {
-  .header {
-    visibility: hidden;
-  }
-
-  h2 {
-    font-size: 41px;
-  }
-
-  .field {
-    font-size: 31px;
-  }
-}
-
-@media (min-width:302px) and (max-width:481px) {
-  .header {
-    visibility: hidden;
-  }
-
-  h2 {
-    font-size: 31px;
-  }
-
-  .field {
-    font-size: 21px;
-  }
+.container-data {
+  padding-left: 2%;
+  font-size: 1.02rem;
+  font-family: "Abel", sans-serif;
 }

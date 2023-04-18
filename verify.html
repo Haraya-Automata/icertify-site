@@ -15,54 +15,64 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="styles/default-style.css">
   <link rel="stylesheet" href="styles/verify-style.css">
+  
+  <script defer src="scripts/default-events.js"></script>
   <script defer src="scripts/verify-events.js"></script>
   <title>Verify</title>
 </head>
 
 <body>
-  <div class="bg-gradient">
-    <div class="header">
-      <a href="index.html"><img class="site-logo" src="images/icertify-logo.png" width="150"></a>
-      <nav>
-        <ul class="nav_links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="tutorial.html">Tutorial</a></li>
-          <li><a href="generate.html">Generate</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </ul>
-      </nav>
-      <a href="https://github.com/Haraya-Automata/e-certificate-maker-site/issues" target="_blank"
-        class="contact">Contact</a>
+  <nav class="navbar">
+    <div class="container-logo">
+      <a href="index.html"><img class="logo" alt="logo" src="images/icertify-logo.png"></a>
     </div>
 
-    <div class="container-title">
-      <div class="page-title">
-        <h2>Verification</h2>
-      </div>
-    </div>
+    <a class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
 
-    <div class="container-body">
-      <div class="container-body-1">
-        <h2 class="field">Name:</h2>
-        <h2 class="field">Issuer:</h2>
-        <h2 class="field">Date:</h2>
-      </div>
-      <div class="container-body-2">
-        <h3 class="field" id="name"></h3>
-        <h3 class="field" id="issuer"></h3>
-        <h3 class="field" id="date"></h3>
-      </div>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tutorial.html">Tutorial</a></li>
+        <li><a href="generate.html">Generate</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="https://github.com/Haraya-Automata/e-certificate-maker-site/issues" target="_blank"
+            class="contact">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <footer>
-      <div class="logo-box">
-        <a href="https://github.com/Haraya-Automata" target="_blank"><img class="haraya-logo"
-            src="images/haraya-automata-small-logo.png"></a>
-        <p>Made by Haraya Automata</p>
-      </div>
-    </footer>
+  <div class="page-title">
+    <h2>Verification</h2>
   </div>
+
+  <div class="container">
+    <div class="container-label">
+      <h2 class="field">Name:</h2>
+      <h2 class="field">Issuer:</h2>
+      <h2 class="field">Date:</h2>
+    </div>
+    <div class="container-data">
+      <h2 class="field" id="name"></h2>
+      <h2 class="field" id="issuer"></h2>
+      <h2 class="field" id="date"></h2>
+    </div>
+  </div>
+
+  <footer>
+    <ul>
+      <li class="footer-text">
+        <h5>Made by Haraya Automata</h5>
+      </li>
+      <li class="footer-logo"><a href="https://github.com/Haraya-Automata" target="_blank"><img class="haraya-logo"
+            src="images/haraya-automata-small-logo.png"></a></li>
+    </ul>
+  </footer>
 </body>
 
 </html>

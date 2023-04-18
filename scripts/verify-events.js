@@ -31,4 +31,3 @@ function setValue(data) {
     document.getElementById(id).innerText = data[id];
   });
 }
-
