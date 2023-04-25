@@ -15,152 +15,140 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="styles/default-style.css">
   <link rel="stylesheet" href="styles/generate-style.css">
+
   <script async src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script defer src="scripts/default-events.js"></script>
   <script defer src="scripts/generate-events.js"></script>
   <title>Generate</title>
 </head>
 
 <body>
-  <div class="bg-gradient">
-    <div class="header">
-      <a href="index.html"><img class="site-logo" src="images/icertify-logo.png" width="150"></a>
-      <nav>
-        <ul class="nav_links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="tutorial.html">Tutorial</a></li>
-          <li><a href="generate.html">Generate</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </ul>
-      </nav>
-      <a href="https://github.com/Haraya-Automata/e-certificate-maker-site/issues" target="_blank"
-        class="contact">Contact</a>
+  <nav class="navbar">
+    <div class="container-logo">
+      <a href="index.html"><img class="logo" alt="logo" src="images/icertify-logo.png"></a>
     </div>
 
-    <div class="container">
-      <div class="container-1">
-        <form id="form" autocomplete="off">
-          <div class="container-1-1">
-            <div class="box">
-              <label for="issuer">Name of Issuer: </label><br>
-              <input type="text" name="issuer" id="issuer">
-            </div>
+    <a class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
 
-            <div class="box">
-              <label for="date">Date Issued: </label><br>
-              <input type="date" name="date" id="date">
-            </div>
-
-            <div class="box file">
-              <input type="file" id="file" name="file" accept=".pdf">
-            </div>
-
-            <div class="box" id="names">
-              <label for="names">Names: </label><br>
-              <textarea name="names" id="names" cols="30" rows="3"></textarea>
-            </div>
-
-            <div class="box">
-              <label>Font Size:</label>
-              <input type="number" name="size" value="40">
-            </div>
-
-            <div class="box">
-              <label for="font">Select a font:</label>
-              <select name="font" id="font">
-                <option value="Courier">Courier</option>
-                <option value="Courier-Bold">Courier Bold</option>
-                <option value="Courier-BoldOblique">Courier Bold Oblique</option>
-                <option value="Courier-Oblique">Courier Oblique</option>
-                <option value="Helvetica">Helvetica</option>
-                <option value="Helvetica-Bold">Helvetica Bold</option>
-                <option value="Helvetica-BoldOblique">Helvetica Bold Oblique</option>
-                <option value="Helvetica-Oblique">Helvetica Oblique</option>
-                <option value="Times-Roman">Times New Roman</option>
-                <option value="Times-Bold">Times New Roman Bold</option>
-                <option value="Times-BoldItalic">Times New Roman Bold Italic</option>
-                <option value="Times-Italic">Times New Roman Italic</option>
-              </select>
-
-              <div class="box" id="color">
-                <label for="color">Select a color: </label><br>
-                <select name="color" id="color">
-                  <option value="black">Black</option>
-                  <option value="white">White</option>
-                  <option value="red">Red</option>
-                  <option value="green">Green</option>
-                  <option value="blue">Blue</option>
-                  <option value="yellow">Yellow</option>
-                  <option value="violet">Violet</option>
-                  <option value="orange">Orange</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="container-1-4">
-            <div class="container-1-2">
-              <div class="box title" id="name-title">
-                <div class="tooltip">
-                  <h1 class="option-title">Name Options</h1>
-                  <span class="tooltiptext">
-                    X refers to the horizontal part while the
-                    Y means the vertical part of the certificate.<br>
-                    The starting point is in the middle (0, 0).<br>
-                    Both values can be negative or positive.<br>
-                    X = -100 (left) or 100 (right)<br>
-                    Y = -100 (bottom) or 100 (top)
-                  </span>
-                </div>
-              </div>
-
-              <div class="box" id="x-name">
-                <label>X position:</label>
-                <input type="number" name="xName" value="-350">
-              </div>
-
-              <div class="box" id="y-name">
-                <label>Y position:</label>
-                <input type="number" name="yName" value="50">
-              </div>
-            </div>
-
-            <div class="container-1-3">
-              <div class="box title" id="qr-title">
-                <div class="tooltip">
-                  <h1 class="option-title">QR Options</h1>
-                  <span class="tooltiptext">
-                    X refers to the horizontal part while the
-                    Y means the vertical part of the certificate.<br>
-                    The starting point is in the bottom left corner(0, 0).<br>
-                    Both values can be negative or positive.<br>
-                    X = -100 (left) or 100 (right)<br>
-                    Y = -100 (bottom) or 100 (top)
-                  </span>
-                </div>
-              </div>
-
-              <div class="box" id="x-qr">
-                <label>X position:</label><br>
-                <input type="number" name="xQr" value="470">
-              </div>
-
-              <div class="box" id="y-qr">
-                <label>Y position:</label><br>
-                <input type="number" name="yQr" value="330">
-              </div>
-            </div>
-          </div>
-
-          <div class="button">
-            <button id="button" type="button">Submit</button>
-          </div>
-        </form>
-      </div>
-      <div class="container-2">
-        <iframe id="preview" title="Certificate Preview"></iframe>
-      </div>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tutorial.html">Tutorial</a></li>
+        <li><a href="generate.html">Generate</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="https://github.com/Haraya-Automata/e-certificate-maker-site/issues" target="_blank"
+            class="contact">Contact</a></li>
+      </ul>
     </div>
+  </nav>
+
+  <div class="container">
+    <form class="fields-container" id="form" autocomplete="off">
+      <div class="issuer-field">
+        <label for="issuer">Name of Issuer:</label><br>
+        <input type="text" id="issuer" name="issuer">
+      </div>
+
+      <div class="date-field">
+        <label for="date">Date Issued:</label><br>
+        <input type="date" id="date" name="date">
+      </div>
+
+      <div class="file-field">
+        <label for="file">Certificate Template:</label><br>
+        <input type="file" id="file" name="file" accept=".pdf">
+      </div>
+
+      <div class="names-field">
+        <label for="names">Names:</label><br>
+        <textarea id="names" name="names" cols="19" rows="5"></textarea>
+      </div>
+
+      <div class="font-and-color-field">
+        <label for="font">Select a font:</label><br>
+        <select id="font" name="font">
+          <option value="Courier">Courier</option>
+          <option value="Courier-Bold">Courier Bold</option>
+          <option value="Courier-BoldOblique">Courier Bold Oblique</option>
+          <option value="Courier-Oblique">Courier Oblique</option>
+          <option value="Helvetica">Helvetica</option>
+          <option value="Helvetica-Bold">Helvetica Bold</option>
+          <option value="Helvetica-BoldOblique">Helvetica Bold Oblique</option>
+          <option value="Helvetica-Oblique">Helvetica Oblique</option>
+          <option value="Times-Roman">Times New Roman</option>
+          <option value="Times-Bold">Times New Roman Bold</option>
+          <option value="Times-BoldItalic">Times New Roman Bold Italic</option>
+          <option value="Times-Italic">Times New Roman Italic</option>
+        </select>
+
+        <label for="color">Select a color:</label><br>
+        <select id="color" name="color">
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="yellow">Yellow</option>
+          <option value="violet">Violet</option>
+          <option value="orange">Orange</option>
+        </select>
+      </div>
+
+      <div class="size-field">
+        <label>Font Size:</label><br>
+        <input name="size" type="number" value="40">
+      </div>
+
+      <h1 class="name-title">Name Options</h1>
+      <span class="tooltip-text">
+        X refers to the horizontal part while the
+        Y means the vertical part of the certificate.<br>
+        The starting point is in the middle (0, 0).<br>
+        Both values can be negative or positive.<br>
+        X = -100 (left) or 100 (right)<br>
+        Y = -100 (bottom) or 100 (top)
+      </span>
+
+      <div class="x-name-field">
+        <label>X position:</label><br>
+        <input type="range" min="-420" max="320" name="xName" value="-350">
+      </div>
+
+      <div class="y-name-field">
+        <label>Y position:</label><br>
+        <input type="range" min="-290" max="260" name="yName" value="50">
+      </div>
+
+      <h1 class="qr-title">QR Options</h1>
+      <span class="tooltip-text">
+        X refers to the horizontal part while the
+        Y means the vertical part of the certificate.<br>
+        The starting point is in the bottom left corner(0, 0).<br>
+        Both values can be negative or positive.<br>
+        X = -100 (left) or 100 (right)<br>
+        Y = -100 (bottom) or 100 (top)
+      </span>
+
+      <div class="x-qr-field">
+        <label>X position:</label><br>
+        <input type="range" min="0" max="790" name="xQr" value="470">
+      </div>
+
+      <div class="y-qr-field">
+        <label>Y position:</label><br>
+        <input type="range" min="0" max="540" name="yQr" value="330">
+      </div>
+
+      <button class="button" type="button" id="button">Submit</button>
+    </form>
+
+    <iframe class="preview" id="preview" title="Certificate Preview"></iframe>
   </div>
 </body>
 

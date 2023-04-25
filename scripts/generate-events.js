@@ -9,6 +9,8 @@ const numbers = ['xName', 'yName', 'xQr', 'yQr'];
 
 let imageBytes;
 
+if (!isLoggedIn()) location.href = 'login.html';
+
 getQR();
 setBorderColor();
 addChangeEventListeners();
@@ -18,7 +20,7 @@ date.addEventListener('keydown', (e) => e.preventDefault());
 button.addEventListener('click', async () => {
   logInputs();
 
-  if (validateInputs() && isLoggedIn()) {
+  if (validateInputs()) {
     button.disabled = true;
     const url = await submitForm();
     localStorage.setItem('log', url);
@@ -84,13 +86,13 @@ function isInputValid(element) {
 
   if (condition && element.name !== 'file' ||
     dropdowns.includes(element.name)) {
-    if (numbers.includes(element.name)) element.value = new Number(element.value);
     localStorage.setItem(element.name, element.value);
   }
 
   if (condition &&
-    ['file', 'number'].includes(element.type) ||
+    ['file', 'number', 'range'].includes(element.type) ||
     [...dropdowns, 'file'].includes(element.name)) {
+    console.log('called by', element.name, element.value, true);
     refreshPreview();
   }
 }
@@ -99,7 +101,7 @@ function getCondition(element, name = null) {
   let conditions = {
     issuer: /^[A-Za-z][A-Za-z\.\'\s-]{4,44}$/.test(element.value),
     date: Boolean(element.value),
-    size: /^[1-9][0-9]{0,1}$/.test(element.value),
+    size: /^[1-9][0-9]$/.test(element.value),
     position: /^[-]?[0-9][0-9]{0,2}$/.test(element.value)
   };
 
@@ -109,7 +111,7 @@ function getCondition(element, name = null) {
   } else if (element.name === 'names') {
     conditions.names = validateNames(element.value);
   }
-  
+
   return name ? conditions[name] : conditions[element.name];
 }
 
@@ -119,7 +121,8 @@ function validateNames(names) {
     .replace(/\r\n/g, '\n')
     .split('\n')
     .filter(name => name !== '');
-  
+
+  if (names.length < 1) valid = false;
   if (names.length > 50) valid = false;
 
   for (let name of names) {
@@ -133,15 +136,16 @@ function validateNames(names) {
 
 function setFormValue(element) {
   let value = localStorage.getItem(element.name);
-  if (value && element.name !== 'file') {
-    if (element.name === 'date') {
-      const utc = new Date().getTime();
-      element.valueAsDate = new Date(utc + 28800000);
-    } else {
-      element.value = value;
-    }
-    element.dispatchEvent(new Event('change'));
+  if (value && !['file', 'date'].includes(element.name)) {
+    element.value = value;
   }
+
+  if (element.name === 'date') {
+    const utc = new Date().getTime();
+    element.valueAsDate = new Date(utc + 28800000);
+  }
+
+  element.dispatchEvent(new Event('change'));
 }
 
 function fileToArrayBuffer(file) {
@@ -185,8 +189,8 @@ async function refreshPreview() {
 async function draw(file, options) {
   const pdf = await PDFLib.PDFDocument.load(file);
   const cert = await pdf.copy();
-  await Promise.all([drawName(cert, options), drawQr(cert, options)]);
   cert.setTitle('Juan Dela Cruz');
+  await Promise.all([drawName(cert, options), drawQr(cert, options)]);
   return cert.save();
 }
 

@@ -1,0 +1,134 @@
+.page-title {
+	margin: 2% 0%;
+	text-align: center;
+
+	color: #dcd61c;
+	font-size: 1.5rem;
+	font-weight: bold;
+	font-family: "Orbitron", sans-serif;
+	letter-spacing: 0.3rem;
+}
+
+h2 {
+	margin: 0;
+}
+
+h3 {
+	margin-top: 0;
+	margin-bottom: 2%;
+}
+
+h4 {
+	margin: 0;
+}
+
+.container {
+	width: 75%;
+	align-self: center;
+	padding-left: 5%;
+
+	display: grid;
+	grid-template-rows: 40% 40%;
+	grid-template-columns: 1fr 2fr 1fr;
+	row-gap: 7%;
+	column-gap: 2%;
+}
+
+.team-title,
+.name-title {
+	color: #dcd61c;
+	font-family: "Abel", sans-serif;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.developer-team {
+	grid-row: 1 / 2;
+
+	color: white;
+	font-family: "Abel", sans-serif;
+	font-size: 0.9rem;
+	font-weight: normal;
+}
+
+.ui-team {
+	grid-row: 2 / 3;
+
+	color: white;
+	font-family: "Abel", sans-serif;
+	font-size: 0.9rem;
+	font-weight: normal;
+}
+
+p {
+	margin: 0;
+	color: white;
+	font-family: "Abel", sans-serif;
+	font-size: 0.8rem;
+	font-weight: normal;
+	line-height: 1rem;
+}
+
+.haraya-meaning {
+	grid-column: 2 / 3;
+}
+
+.icertify-meaning {
+	grid-row: 2 / 3;
+	grid-column: 2 / 3;
+}
+
+.logo-container {
+	grid-row: 1 / 2;
+	grid-column: 3 / 4;
+
+	display: flex;
+	justify-content: center;
+}
+
+.haraya-logo {
+	width: 100%;
+	max-width: 150px;
+	min-width: 50px;
+}
+
+/* 
+.container-1 {
+	padding-right: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.container-2 {
+	padding-right: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.haraya-logo {
+	padding-top: 20px;
+	padding-left: 10px;
+}
+
+.team-title {
+	color: #dcd61c;
+	font-weight: bold;
+}
+
+#ui-team {
+	padding-top: 13px;
+}
+
+.name-title {
+	color: #dcd61c;
+	font-weight: bold;
+	font-size: 26px;
+}
+
+.haraya-text {
+	text-align: justify;
+	width: 400px;
+	font-family: "Abel", sans-serif;
+	font-size: 18px;
+	color: #fff;
+} */

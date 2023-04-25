@@ -1,6 +1,7 @@
 const consoleBox = document.getElementById('console');
 const text = document.getElementById('text');
 const button = document.getElementById('button');
+const driveUrl = document.getElementById('drive-url');
 
 let options = {
   consoleStyle: 'none',
@@ -17,6 +18,12 @@ const logOptions = {
 }
 
 isLogEmpty();
+
+text.addEventListener('click', () => {
+  if (driveUrl.href) {
+    location.href = driveUrl.href;
+  }
+});
 
 function isLogEmpty() {
   const path = localStorage.getItem('log');
@@ -41,7 +48,12 @@ function getMessage(path) {
         consoleBox.value += `ERROR: ${event.data}\n`;
         closeConnection(eventSource, consoleBox);
       } else if (event.data.includes('https')) {
-        consoleBox.value += `${event.data}\n`;
+        driveUrl.href = event.data;
+        text.innerText = driveUrl.href;
+
+        text.style.cursor = 'pointer';
+        text.style.textDecoration = 'underline';
+        text.style.textDecorationColor = 'white';
       } else {
         consoleBox.value += `INFO: ${event.data}\n`;
       }

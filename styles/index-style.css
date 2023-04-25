@@ -1,195 +1,78 @@
-* {
-	box-sizing: border-box;
+h4 {
 	margin: 0;
-	padding: 0;
 }
 
-li,
-a {
-	font-family: "Abel", sans-serif;
-	font-weight: 500;
-	font-size: 30px;
-	color: #edf0f1;
-	text-decoration: none;
-}
+.page-title {
+	margin: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	text-align: center;
 
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 5px 10%;
-}
-
-.header ul {
-	text-align: right;
-	padding-left: 20px;
-	align-items: center;
-}
-
-ul li {
-	list-style: none;
-	display: inline-block;
-	padding: 0px 35px;
-}
-
-.header ul li a {
-	display: block;
-	text-decoration: none;
-	text-transform: uppercase;
-	color: #fff;
-	font-size: 20px;
-	font-family: "Abel", sans-serif;
-	letter-spacing: 2px;
-	padding: 10px;
-	transition: all ease 0.5s;
-	border-radius: 20px;
-}
-
-.header ul li a:hover {
-	background-color: #051937;
-	color: #bfba21;
-}
-
-.site-logo {
-	cursor: pointer;
-}
-
-.contact {
-	padding: 9px 25px;
-	background-color: #dcd61c;
-	border: none;
-	border-radius: 20px;
-	cursor: pointer;
-	transition: all 0.3s ease 0s;
-
-	text-transform: uppercase;
-	font-family: "Abel", sans-serif;
-
-	font-size: 20px;
-	color: #edf0f1;
-	text-decoration: none;
-}
-
-.contact:hover {
-	background-color: #bfba21;
-}
-
-.bg-gradient {
-	height: 100vh;
-	width: 100vw;
-	background-image: linear-gradient(to bottom, #051937, #00214f, #002968, #093181, #1f379a);
-	position: relative;
+	color: #dcd61c;
+	font-family: "Orbitron", sans-serif;
+	font-size: 1.4rem;
+	font-weight: bold;
+	letter-spacing: 10px;
 }
 
 .container {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+}
+
+.subtitle {
+	padding-top: 0.8%;
+	color: white;
+	font-size: 1.2rem;
+	font-family: "Abel", sans-serif;
 	text-align: center;
+}
+
+.button {
 	margin: auto;
-}
-
-.card {
-	padding-top: 15px;
-	font-family: "Abel", sans-serif;
-	font-weight: normal;
-	color: #fff;
-}
-
-.page-title {
-	font-family: "Orbitron", sans-serif;
-	font-size: 34px;
-	font-weight: bold;
-	letter-spacing: 10px;
-	color: #dcd61c;
-}
-
-.console {
-	padding-top: 20px;
-}
-
-#console {
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 20px;
-	padding-right: 10px;
-	border-radius: 20px;
-	font-family: "Abel", sans-serif;
-	font-weight: bold;
-	font-size: 25px;
-	resize: none;
-	display: none;
-	white-space: pre-line;
-}
-
-.button-box {
-	padding-top: 30px;
-}
-
-.start {
-	padding: 9px 25px;
+	margin-top: 2%;
+	padding: 0.7% 1.5%;
 	background-color: #dcd61c;
+
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
-	transition: all 0.3s ease 0s;
 
-	text-transform: uppercase;
+	color: white;
+	font-size: 0.8rem;
 	font-family: "Abel", sans-serif;
 
-	font-size: 20px;
-	color: #edf0f1;
+	text-align: center;
 	text-decoration: none;
+	text-transform: uppercase;
 }
 
-.start:hover {
+.button:hover {
 	background-color: #bfba21;
 }
 
-h4 {
-	font-size: 30px;
-}
+.console {
+	display: none;
+	margin: auto;
+	padding: 1% 0%;
+	padding-left: 2%;
+	padding-right: 1%;
+	border-radius: 20px;
 
-footer {
-	position: absolute;
-	bottom: 0;
-	height: auto;
-	width: 100vw;
+	font-size: 1.1rem;
 	font-family: "Abel", sans-serif;
-	padding-top: 40px;
-	color: #fff;
-
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	text-align: right;
-	padding-left: 10px;
-	padding-bottom: 10px;
-}
-
-footer .haraya-logo {
-	padding-right: 10px;
-	padding-bottom: 10px;
-
-	position: absolute;
-	top: 1;
-	bottom: 0;
-	left: 1;
-	right: 0;
-}
-
-footer p {
-	font-size: 14px;
-	text-align: center;
+	font-weight: bold;
+	white-space: pre-line;
+	resize: none;
 }
 
 .typewriter {
-	overflow: hidden;
-	border-right: .15em solid rgb(255, 255, 255);
-	white-space: nowrap;
 	margin: 0 auto;
+	overflow: hidden;
+	white-space: nowrap;
 	letter-spacing: .15em;
+	border-right: .15em solid rgb(255, 255, 255);
 	animation:
 		typing 3.5s steps(40, end),
 		blink-caret .75s step-end infinite;

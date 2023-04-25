@@ -1,223 +1,91 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-li,
-a {
-  font-family: "Abel", sans-serif;
-  font-weight: 500;
-  font-size: 30px;
-  color: #edf0f1;
-  text-decoration: none;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 10%;
-}
-
-.header ul {
-  text-align: right;
-  padding-left: 20px;
-  align-items: center;
-}
-
-ul li {
-  list-style: none;
-  display: inline-block;
-  padding: 0px 35px;
-
-}
-
-.header ul li a {
-  display: block;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 20px;
-  font-family: "Abel", sans-serif;
-  letter-spacing: 2px;
-  padding: 10px;
-  transition: all ease 0.5s;
-  border-radius: 20px;
-}
-
-.header ul li a:hover {
-  background-color: #051937;
-  color: #bfba21;
-}
-
-.site-logo {
-  cursor: pointer;
-}
-
-.contact {
-  padding: 9px 25px;
-  background-color: #dcd61c;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-
-  text-transform: uppercase;
-  font-family: "Abel", sans-serif;
-
-  font-size: 20px;
-  color: #edf0f1;
-  text-decoration: none;
-}
-
-.contact:hover {
-  background-color: #bfba21;
-}
-
-.bg-gradient {
-  height: 100vh;
-  width: 100vw;
-  background-image: linear-gradient(to bottom, #051937, #00214f, #002968, #093181, #1f379a);
-  position: relative;
-}
-
 .page-title {
+  margin: 2% 0%;
   text-align: center;
-  font-family: "Orbitron", sans-serif;
-  font-size: 34px;
-  font-weight: bold;
-  letter-spacing: 10px;
+
   color: #dcd61c;
-}
-
-.container-title {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-}
-
-.container-body {
-  padding-left: 50px;
-
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  padding-top: 20px;
-}
-
-.field-1 {
-  width: 300px;
-
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-
-  font-family: "Abel", sans-serif;
-  font-size: 31px;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.3rem;
 }
 
-.field-2 {
-  width: 300px;
-  padding-top: 20px;
+h2 {
+  margin: 0;
+}
 
+.container {
+  width: 30%;
+  padding-left: 6%;
+  align-self: center;
+
+  display: grid;
+  grid-template-rows: 25% 24% 25% 24% 20%;
+  grid-template-columns: 2fr 0.7fr;
+  justify-items: flex-start;
+  row-gap: 7%;
+  column-gap: 2%;
+}
+
+.username-label {
+  grid-row: 1 / 2;
+}
+
+.username-input {
+  grid-row: 2 / 3;
+}
+
+.password-label {
+  grid-row: 3 / 4;
+}
+
+.password-input {
+  grid-row: 4 / 5;
+}
+
+.username-label,
+.password-label {
+  color: #fff;
+  margin: 0;
   font-family: "Abel", sans-serif;
-  font-size: 31px;
+  font-size: 1.3rem;
   font-weight: bold;
-  color: #fff;
-}
-
-.password {
-  padding-bottom: 10px;
-}
-
-#button-show {
-  position: relative;
-  bottom: 53px;
-  left: 250px;
-
-  padding: 5px 5px;
-  background-color: #dcd61c;
-  border-radius: 10px;
-  border: none;
-  font-family: "Abel", sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  color: #fff;
-  cursor: pointer;
-}
-
-#button-submit {
-  position: relative;
-  top: 5px;
-  right: 53px;
-
-  padding: 5px 92px;
-  background-color: #dcd61c;
-  border-radius: 10px;
-  border: none;
-  font-family: "Abel", sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 18px;
-  color: #fff;
-  cursor: pointer;
-}
-
-#button-show:hover,
-#button-submit:hover {
-  background-color: #bfba21;
 }
 
 input {
-  padding: 5px;
-  font-size: 18px;
+  width: 100%;
+  font-size: 0.8rem;
   font-family: 'Abel', sans-serif;
   font-weight: bold;
   border: 3px solid;
-  border-color: black;
   border-radius: 4px;
-  width: 80%;
-  resize: none;
+  border-color: black;
 }
 
-.haraya-logo {
-  padding-top: 20px;
-  padding-left: 10px;
+.button-show {
+  grid-row: 4 / 5;
+  grid-column: 2 / 3;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  height: auto;
-  width: 100vw;
+.button-submit {
+  grid-row: 5 / 6;
+  grid-column: 1 / 2;
+
+  width: 100%;
+  text-transform: uppercase;
+}
+
+button {
+  background-color: #dcd61c;
+  border-radius: 10px;
+  border: none;
+
+  color: white;
   font-family: "Abel", sans-serif;
-  padding-top: 40px;
-  color: #fff;
-
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: right;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-footer .haraya-logo {
-  padding-right: 10px;
-  padding-bottom: 10px;
-
-  position: absolute;
-  top: 1;
-  bottom: 0;
-  left: 1;
-  right: 0;
-}
-
-footer p {
-  font-size: 14px;
-  text-align: center;
+button:hover {
+  background-color: #bfba21;
 }
