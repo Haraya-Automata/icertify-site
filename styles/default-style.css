@@ -114,70 +114,9 @@ body {
   width: 100%;
 }
 
-footer {
-  width: 100%;
-  text-align: center;
-
-  position: fixed;
-  left: 0;
-  bottom: 0;
-}
-
-footer ul {
-  margin: 0;
-
-  color: #fff;
-  font-family: "Abel", sans-serif;
-
-  display: flex;
-  justify-content: flex-end;
-  list-style: none;
-}
-
-footer li {
-  max-height: 67px;
-  padding-bottom: 0.5%;
-
-  display: flex;
-  justify-content: flex-end;
-}
-
-.footer-logo {
-  padding-right: 1%;
-
-  max-width: 120px;
-  min-width: 30px;
-  width: 7%;
-
-  align-self: self-end;
-}
-
-footer a .haraya-logo {
-  max-width: 120px;
-  min-width: 30px;
-  width: 100%;
-}
-
-.footer-text {
-  width: 40%;
-  margin-right: 38%;
-  align-self: center;
-}
-
-footer li h5 {
-  font-weight: normal;
-  margin: 0%;
-  padding-top: 5%;
-  font-size: 15px;
-}
-
 @media (min-width:1401px) {
   html {
     font-size: 32px;
-  }
-
-  footer li h5 {
-    font-size: 17px;
   }
 }
 
@@ -191,19 +130,11 @@ footer li h5 {
   html {
     font-size: 18px;
   }
-
-  footer li h5 {
-    font-size: 13px;
-  }
 }
 
 @media (min-width:600px) and (max-width:765px) {
   html {
     font-size: 14px;
-  }
-
-  footer li h5 {
-    font-size: 11px;
   }
 }
 
@@ -223,6 +154,7 @@ footer li h5 {
   }
 
   .navbar-links.active {
+    margin-top: 1%;
     display: block;
   }
 
@@ -233,14 +165,6 @@ footer li h5 {
 
   .toggle-button {
     display: flex;
-  }
-
-  .footer-text {
-    margin-right: 35%;
-  }
-
-  footer li h5 {
-    font-size: 9px;
   }
 }
 
@@ -260,6 +184,7 @@ footer li h5 {
   }
 
   .navbar-links.active {
+    margin-top: 1%;
     display: block;
   }
 
@@ -270,13 +195,5 @@ footer li h5 {
 
   .toggle-button {
     display: flex;
-  }
-
-  .footer-text {
-    margin-right: 32%;
-  }
-
-  footer li h5 {
-    font-size: 8px;
   }
 }

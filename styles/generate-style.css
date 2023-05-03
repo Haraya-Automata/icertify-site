@@ -1,18 +1,20 @@
 .container {
+	height: 70%;
 	display: flex;
 	justify-content: space-between;
+	align-content: normal;
 	flex-wrap: wrap;
 }
 
 .fields-container {
-	width: 55%;
+	width: 50%;
 	padding-left: 2%;
 
 	display: grid;
-	grid-template-rows: 17% 34% 8% 17% 17% 12%;
+	grid-template-rows: 15% 34% 8% 15% 15% 10%;
 	grid-template-columns: 0.5fr 0.2fr 0.5fr;
-	justify-items: center;
 	row-gap: 2%;
+	column-gap: 3%;
 }
 
 label {
@@ -35,31 +37,27 @@ textarea {
 }
 
 input[type="file"] {
-	width: 95%;
 	color: white;
 }
 
 input[type="range"] {
+	width: 80%;
 	padding: 0;
 	accent-color: white;
 }
 
 .name-title,
 .qr-title {
-	margin: auto;
+	margin: 0;
 	color: #dcd61c;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	font-family: "Abel", sans-serif;
-	text-align: center;
-}
-
-.tooltip-text {
-	display: none;
+	text-align: start;
 }
 
 .preview {
-	width: 42%;
-	margin-right: 2%;
+	width: 48%;
+	margin-right: 1%;
 	background-color: white;
 	border-color: #dcd61c;
 	border-width: 1%;
@@ -76,7 +74,6 @@ input[type="range"] {
 
 .file-field {
 	grid-column: 3 / 4;
-	margin-left: 15%;
 }
 
 .names-field {
@@ -89,7 +86,7 @@ input[type="range"] {
 }
 
 .font-and-color-field {
-	width: 70%;
+	width: 85%;
 	grid-row: 2 / 3;
 	grid-column: 3 / 4;
 }
@@ -122,7 +119,6 @@ input[type="range"] {
 }
 
 .button {
-	width: 120%;
 	grid-row: 6 / 7;
 	grid-column: 2 / 3;
 	background-color: #dcd61c;
@@ -153,7 +149,7 @@ input[type="range"] {
 	.preview {
 		width: 60%;
 		margin: auto;
-		margin-top: 10%;
+		margin-top: 2%;
 	}
 }
 
@@ -168,8 +164,8 @@ input[type="range"] {
 	}
 
 	.preview {
-		width: 50%;
+		width: 53%;
 		margin: auto;
-		margin-top: 10%;
+		margin-top: 2%;
 	}
 }

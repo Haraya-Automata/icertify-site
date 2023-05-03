@@ -92,7 +92,6 @@ function isInputValid(element) {
   if (condition &&
     ['file', 'number', 'range'].includes(element.type) ||
     [...dropdowns, 'file'].includes(element.name)) {
-    console.log('called by', element.name, element.value, true);
     refreshPreview();
   }
 }
@@ -175,9 +174,22 @@ function setBorderColor() {
   }
 }
 
+function validateOptions() {
+  for (let element of elements) {
+    if (element.name && ![...dropdowns, 'issuer', 'date', 'names'].includes(element.name)) {
+      if (numbers.includes(element.name)) {
+        if (!getCondition(element, 'position')) return false;
+      } else {
+        if (!getCondition(element)) return false;
+      }
+    }
+  }
+  return true;
+}
+
 async function refreshPreview() {
   let file = '';
-  if (getCondition(elements['file'])) {
+  if (getCondition(elements['file']) && validateOptions()) {
     URL.revokeObjectURL(preview.src);
     file = await fileToArrayBuffer(elements['file'].files[0]);
     file = await draw(file, getOptions());
