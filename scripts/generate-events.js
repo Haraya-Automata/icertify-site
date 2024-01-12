@@ -9,8 +9,6 @@ const numbers = ['xName', 'yName', 'xQr', 'yQr'];
 
 let imageBytes;
 
-if (!isLoggedIn()) location.href = 'login.html';
-
 getQR();
 setBorderColor();
 addChangeEventListeners();
@@ -26,9 +24,7 @@ button.addEventListener('click', async () => {
     localStorage.setItem('log', url);
     location.href = 'index.html';
     button.disabled = false;
-  } else if (!isLoggedIn()) {
-    location.href = 'login.html';
-  }
+  } 
 });
 
 async function submitForm() {
@@ -48,10 +44,6 @@ async function getQR() {
     let response = await fetch('https://icertify.vercel.app/images/example-qr.png');
     imageBytes = await response.arrayBuffer();
   }
-}
-
-function isLoggedIn() {
-  return localStorage.getItem('authorized');
 }
 
 function validateInputs() {
